@@ -1,6 +1,3 @@
-import sys
-sys.path.append("./PyGithub");
-from github import Github
 from ..objects import Contributor, Commit, Repository
 
 class Fetcher():
