@@ -18,7 +18,8 @@ class RepoAnalyzer():
         json_file = json.dumps(languages)
         return json_file
     
-    def commit_frequency(self):
+    # Monthly?
+    def weekly_commit_frequency(self):
         json_file = json.dumps(self.repository.get_commit_stats(), default=str)
         return json_file
 
@@ -35,3 +36,12 @@ class RepoAnalyzer():
         top_contributors = commit_cnt.most_common()[:n]
         json_file = json.dumps(top_contributors, default=str)
         return json_file
+
+
+# tsalke: last change
+# day/week/month commits (easy)  !(from -> to : time period)
+# filtering: commits by author
+# lines added by author
+# lines deleted by author
+
+# tito file rogor itsvleba: deleted & added lines

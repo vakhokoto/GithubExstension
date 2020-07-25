@@ -22,6 +22,7 @@ class Fetcher():
         data['languages'] = self.repository.get_languages()
         data['topics'] = self.repository.get_topics()
         data['description'] = self.repository.description
+        data['name'] = self.repository.name
         return data
 
     def get_contributor_stats(self):
