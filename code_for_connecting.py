@@ -1,6 +1,6 @@
-from analyzer import Fetcher, RepoAnalyzer
+from analyzer import Fetcher, RepoAnalyzer, Homepage
 import sys
-sys.path.append("./PyGithub");
+sys.path.append("./PyGithub")
 from github import Github
 import getpass
 
@@ -16,9 +16,14 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
+homepage = Homepage(repo)
+
+print(homepage.get_commits())
+
+
 analyzer = RepoAnalyzer(repo)
 
 # analyzer.weekly_code_frequency()
 # analyzer.language_distribution()
-# analyzer.commit_frequency()
+# analyzer.weekly_commit_frequency()
 # analyzer.top_contributors_monthly()

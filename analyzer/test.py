@@ -17,5 +17,6 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
+print(repo.get_name())
 analyzer = RepoAnalyzer(repo)
 

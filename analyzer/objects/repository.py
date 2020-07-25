@@ -5,7 +5,7 @@ class Repository():
         """
         Class representing a repository
 
-        metadata - languages, topics & description
+        metadata - name, languages, topics & description
         """
         self.contributors = repo_info['contributors']
         self.num_contributors = len(self.contributors)
@@ -21,6 +21,9 @@ class Repository():
 
     def get_metadata(self):
         return self.metadata
+
+    def get_name(self):
+        return self.metadata['name']
 
     def get_languages(self):
         return self.metadata['languages']
@@ -43,6 +46,7 @@ class Repository():
     def get_code_frequency(self):
         return self.code_frequency
 
+    # TODO: current_date = start_date
     def ndays_commits(self, n=30):
         current_date = date.today()
         nd_commits = []
@@ -61,3 +65,11 @@ class Repository():
             nd_commits.append(cur_day_info)
         return nd_commits
     
+    def n_commits(self, n=10):
+        coms = []
+        for commit in self.commits:
+            if n == 0:
+                break
+            coms.append(commit)
+            n -= 1
+        return coms
