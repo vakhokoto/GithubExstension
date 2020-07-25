@@ -1,4 +1,4 @@
-class Commit(Object):
+class Commit():
     def __init__(self, commit_info):
         """
         Class representing a single commit

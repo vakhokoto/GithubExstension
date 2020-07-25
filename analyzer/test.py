@@ -17,4 +17,10 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 contributors = fetcher.get_contributors()
-print(contributors)
+commits = fetcher.get_commits()
+
+for com in commits:
+    print(com.get_author_login())
+    print(com.get_commit_msg())
+
+#print(contributors)
