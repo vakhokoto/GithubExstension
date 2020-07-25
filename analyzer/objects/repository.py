@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta, date
 
 class Repository():
     def __init__(self, repo_info : dict):
@@ -39,9 +40,29 @@ class Repository():
         return self.commit_stats
     
     def get_code_frequency(self):
-        return self.code_frequency
+        return self.code_frequencyfor 
 
-    def last_weeks_commits(self):
+    def ndays_commits(self, n=7):
+        # 2019-11-12T07:11:47Z
+        # %Y-%m-%d   without this=>   T%H:%M:%SZ
         
-    
+        # cur date => date obj
+        cur_date = date.today()
+
+        nd_commits = []
+        for i in range(n):
+            cur_date += timedelta(days=i)
+            cur_day_info = {}
+            commits_list = []
+
+            for commit in self.commits:
+                commit_date = datetime.strptime(commit.get_date(), '%Y-%m-%d')
+                if commit_date == cur_date:
+                    commits_list.append(commit)
+                elif commit_date > cur_date:
+                    break
+            cur_day_info['date'] = cur_date
+            cur_day_info['commits'] = commits_list
+            nd_commits.append(cur_day_info)
+        return nd_commits
     
