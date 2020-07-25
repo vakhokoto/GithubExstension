@@ -1,7 +1,7 @@
 import sys
 sys.path.append("./PyGithub");
 from github import Github
-from objects import Contributor, Commit, Repository
+from ..objects import Contributor, Commit, Repository
 
 class Fetcher():
     def __init__(self, repository):
@@ -71,7 +71,7 @@ class Fetcher():
                     'contributor stats' : self.get_contributor_stats(), 
                     'commit stats' : self.get_commit_stats(), 
                     'code frequency' : self.get_code_frequency(),
-                    'commits' : self.get_commits()
+                    'commits' : self.get_commits(limit=10)
                     }
         repo = Repository(repo_dict)
         return repo
@@ -92,7 +92,7 @@ class Fetcher():
             commit_dict['author name'] = commit.author.name
             commit_dict['author username'] = commit.raw_data['author']['login']
             commit_dict['commit message'] = commit.raw_data['commit']['message']
-            commit_dict['date'] = commit.raw_data['commit']['author']['date']
+            commit_dict['date'] = commit.commit.author.date
             commit_dict['stats'] = commit.raw_data['stats']
             commit_dict['url'] = commit.html_url
             commit_dict['files'] = []

@@ -1,5 +1,4 @@
-from fetching import Fetcher
-from analytics import RepoAnalyzer
+from analyzer import Fetcher, RepoAnalyzer
 import sys
 sys.path.append("./PyGithub");
 from github import Github
@@ -19,3 +18,7 @@ fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
 analyzer = RepoAnalyzer(repo)
 
+# analyzer.weekly_code_frequency()
+# analyzer.language_distribution()
+# analyzer.commit_frequency()
+# analyzer.top_contributors_monthly()

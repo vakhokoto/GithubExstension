@@ -41,27 +41,22 @@ class Repository():
         return self.commit_stats
     
     def get_code_frequency(self):
-        return self.code_frequencyfor 
+        return self.code_frequency
 
-    def ndays_commits(self, n=7):
-        cur_date = date.today()
-        print('cur date', cur_date, type(cur_date))
+    def ndays_commits(self, n=30):
+        current_date = date.today()
         nd_commits = []
         for i in range(n):
-            cur_date += timedelta(days=i)
             cur_day_info = {}
             commits_list = []
-
+            cur_date = current_date - timedelta(days=i)
             for commit in self.commits:
-                commit_date = datetime(commit.get_date())
-                print(commit_date)
-                commit_date = datetime.strptime(commit.get_date(), '%Y-%m-%d')
-                print('commit date', commit_date, type(commit_date))
-                if commit_date == cur_date:
+                commit_date = commit.get_date()
+                if commit_date.date() == cur_date:
                     commits_list.append(commit)
-                elif commit_date > cur_date:
+                elif commit_date.date() < cur_date:
                     break
-            cur_day_info['date'] = cur_date
+            cur_day_info['date'] = commit_date
             cur_day_info['commits'] = commits_list
             nd_commits.append(cur_day_info)
         return nd_commits
