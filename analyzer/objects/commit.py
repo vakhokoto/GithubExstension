@@ -60,4 +60,3 @@ class Commit():
 
     def get_files_changed_count(self):
         return len(self.files)
-    

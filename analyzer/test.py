@@ -24,21 +24,23 @@ commit_stats = fetcher.get_commit_stats()
 code_freq = fetcher.get_code_frequency()
 #print(contributors, metadata, contributor_stats, commit_stats, code_freq)
 
-#commits = fetcher.get_commits(limit = 2)
+#commits = fetcher.get_commits(limit = 9)
 repo = fetcher.get_repository()
 
-analyzer = RepoAnalyzer(repo)
-print(analyzer.language_distribution())
+print(repo.ndays_commits())
 
-# print(repo.get_languages())
-# print(repo.get_description())
-# for contr in repo.get_contributors():
-#     print(contr.get_login())
+#Pytorch_Part_Of_Speech_Tagging
 
-# print("DESC: ", repo.get_description())
-# print("")
-# print("CONTRIBUTOR STATS: ", repo.get_contributor_stats())
-# print("")
-# print("COMMIT STATS: ", repo.get_commit_stats())
-# print("")
-# print("CODE FREQUENCY: ", repo.get_code_frequency())
+
+"""
+for contr in repo.get_contributors():
+    print(contr.get_login())
+
+print("DESC: ", repo.get_description())
+print("")
+print("CONTRIBUTOR STATS: ", repo.get_contributor_stats())
+print("")
+print("COMMIT STATS: ", repo.get_commit_stats())
+print("")
+print("CODE FREQUENCY: ", repo.get_code_frequency())
+"""

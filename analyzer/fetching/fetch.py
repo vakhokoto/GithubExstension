@@ -61,9 +61,6 @@ class Fetcher():
             code_frequency.append({'date':stat.week, 'additions':stat.additions, 'deletions':stat.deletions})
         return code_frequency
 
-    # new
-    # var1 : ak shevkmnat object, tito zeda metodebs gadavtset & davusetod
-    # var2 : am metodshi davusetot zeda metodebidan dabrunebulebi (setterebit jobia drois pontshi?)
     def get_repository(self):
         """
         Returns Repository object with all the info about the repository
@@ -79,7 +76,6 @@ class Fetcher():
         repo = Repository(repo_dict)
         return repo
 
-    # setters better?
     def get_commits(self, limit=None):
         """
         Returns repository's commits
