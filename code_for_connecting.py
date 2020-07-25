@@ -4,7 +4,6 @@ sys.path.append("./PyGithub")
 from github import Github
 import getpass
 
-
 username = input("Github Username: ")
 password = getpass.getpass()
 account = Github(username, password)
@@ -16,11 +15,8 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
+
 homepage = Homepage(repo)
-
-print(homepage.get_commits())
-
-
 analyzer = RepoAnalyzer(repo)
 
 # analyzer.weekly_code_frequency()
