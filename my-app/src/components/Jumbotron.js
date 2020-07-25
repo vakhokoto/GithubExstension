@@ -2,13 +2,16 @@ import React from "react";
 import { Jumbotron as Jumbo, Container } from "react-bootstrap";
 import styled from "styled-components";
 import shota from "../assets/shota.jpg";
+import { TokenInput } from "./TokenInput";
+
+import { Guide } from "./Guide";
 
 const Styles = styled.div`
   .jumbo {
     background: url(${shota}) no-repeat fixed bottom;
     background-size: cover;
     color: #efefef;
-    height: 200px;
+    height: 400px;
     position: relative;
     z-index: -2;
   }
@@ -31,6 +34,7 @@ export const Jumbotron = () => (
       <Container>
         <h1>Git-Hub Analyzer</h1>
       </Container>
+      <Guide />
     </Jumbo>
   </Styles>
 );
