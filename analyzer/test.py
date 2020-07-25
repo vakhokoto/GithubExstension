@@ -17,4 +17,8 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 contributors = fetcher.get_contributors()
-print(contributors)
+metadata = fetcher.get_metadata()
+contributor_stats = fetcher.get_contributor_stats()
+commit_stats = fetcher.get_commit_stats()
+code_freq = fetcher.get_code_frequency()
+print(contributors, metadata, contributor_stats, commit_stats, code_freq)
