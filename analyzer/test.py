@@ -23,9 +23,18 @@ commit_stats = fetcher.get_commit_stats()
 code_freq = fetcher.get_code_frequency()
 #print(contributors, metadata, contributor_stats, commit_stats, code_freq)
 
-commits = fetcher.get_commits(limit = 2)
+#commits = fetcher.get_commits(limit = 2)
+repo = fetcher.get_repository()
 
-for com in commits:
-    print(com.get_author_name())
-    print(com.get_author_username())
-    print(com.get_commit_msg())
+print(repo.get_languages())
+print(repo.get_description())
+for contr in repo.get_contributors():
+    print(contr.get_login())
+
+print("DESC: ", repo.get_description())
+print("")
+print("CONTRIBUTOR STATS: ", repo.get_contributor_stats())
+print("")
+print("COMMIT STATS: ", repo.get_commit_stats())
+print("")
+print("CODE FREQUENCY: ", repo.get_code_frequency())

@@ -1,7 +1,7 @@
 import sys
 sys.path.append("./PyGithub");
 from github import Github
-from objects import Contributor, Commit
+from objects import Contributor, Commit, Repository
 
 class Fetcher():
     def __init__(self, repository):
@@ -61,7 +61,28 @@ class Fetcher():
             code_frequency.append({'date':stat.week, 'additions':stat.additions, 'deletions':stat.deletions})
         return code_frequency
 
+    # new
+    # var1 : ak shevkmnat object, tito zeda metodebs gadavtset & davusetod
+    # var2 : am metodshi davusetot zeda metodebidan dabrunebulebi (setterebit jobia drois pontshi?)
+    def get_repository(self):
+        """
+        Returns Repository object with all the info about the repository
+        """
+        repo_dict = {
+                    'contributors' : self.get_contributors(), 
+                    'metadata' : self.get_metadata(), 
+                    'contributor stats' : self.get_contributor_stats(), 
+                    'commit stats' : self.get_commit_stats(), 
+                    'code frequency' : self.get_code_frequency()
+                    }
+        repo = Repository(repo_dict)
+        return repo
+
+    # setters better?
     def get_commits(self, limit : int):
+        """
+        Returns repository's commits
+        """
         commits = self.repository.get_commits()
         commits_list = []
         for commit in commits:
