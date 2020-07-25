@@ -80,12 +80,14 @@ class Fetcher():
         return repo
 
     # setters better?
-    def get_commits(self, limit : int):
+    def get_commits(self, limit=None):
         """
         Returns repository's commits
         """
         commits = self.repository.get_commits()
         commits_list = []
+        if not limit:
+            limit = commits.totalCount
         for commit in commits:
             if limit == 0:
                 break
