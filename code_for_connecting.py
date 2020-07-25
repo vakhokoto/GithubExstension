@@ -1,6 +1,6 @@
 from analyzer import Fetcher, RepoAnalyzer
 import sys
-sys.path.append("./PyGithub");
+sys.path.append("./PyGithub")
 from github import Github
 import getpass
 
