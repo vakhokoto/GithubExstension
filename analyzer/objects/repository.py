@@ -11,6 +11,7 @@ class Repository():
         self.contributor_stats = repo_info['contributor stats']
         self.commit_stats = repo_info['commit stats']
         self.code_frequency = repo_info['code frequency']
+        self.commits = repo_info['commits']
 
 
     def get_contributors(self):
@@ -40,5 +41,7 @@ class Repository():
     def get_code_frequency(self):
         return self.code_frequency
 
+    def last_weeks_commits(self):
+        
     
     

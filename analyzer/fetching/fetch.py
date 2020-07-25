@@ -73,7 +73,8 @@ class Fetcher():
                     'metadata' : self.get_metadata(), 
                     'contributor stats' : self.get_contributor_stats(), 
                     'commit stats' : self.get_commit_stats(), 
-                    'code frequency' : self.get_code_frequency()
+                    'code frequency' : self.get_code_frequency(),
+                    'commits' : self.get_commits()
                     }
         repo = Repository(repo_dict)
         return repo
