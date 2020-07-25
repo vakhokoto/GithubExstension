@@ -42,7 +42,7 @@ class Repository():
     def get_code_frequency(self):
         return self.code_frequencyfor 
 
-    def ndays_commits(self, n=7):
+    def ndays_commits(self, n=10):
         # 2019-11-12T07:11:47Z
         # %Y-%m-%d   without this=>   T%H:%M:%SZ
         
@@ -56,10 +56,10 @@ class Repository():
             commits_list = []
 
             for commit in self.commits:
-                commit_date = datetime.strptime(commit.get_date(), '%Y-%m-%d')
-                if commit_date == cur_date:
+                commit_date = datetime.strptime(commit.get_date(limit=1), '%Y-%m-%dT%H:%M:%SZ')
+                if commit_date.date() == cur_date:
                     commits_list.append(commit)
-                elif commit_date > cur_date:
+                elif commit_date.date() > cur_date:
                     break
             cur_day_info['date'] = cur_date
             cur_day_info['commits'] = commits_list
