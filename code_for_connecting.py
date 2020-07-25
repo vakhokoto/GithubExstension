@@ -1,8 +1,9 @@
-from analyzer import Fetcher, RepoAnalyzer, Homepage
+from analyzer import Fetcher, RepoAnalyzer
 import sys
 sys.path.append("./PyGithub")
 from github import Github
 import getpass
+
 
 username = input("Github Username: ")
 password = getpass.getpass()
@@ -15,11 +16,9 @@ for repo in account.get_user().get_repos():
 
 fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
-
-homepage = Homepage(repo)
 analyzer = RepoAnalyzer(repo)
 
 # analyzer.weekly_code_frequency()
 # analyzer.language_distribution()
-# analyzer.weekly_commit_frequency()
+# analyzer.commit_frequency()
 # analyzer.top_contributors_monthly()
