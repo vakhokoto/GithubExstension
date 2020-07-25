@@ -7,6 +7,7 @@ class Repository():
         metadata - languages, topics & description
         """
         self.contributors = repo_info['contributors']
+        self.num_contributors = len(self.contributors)
         self.metadata = repo_info['metadata']
         self.contributor_stats = repo_info['contributor stats']
         self.commit_stats = repo_info['commit stats']
@@ -42,6 +43,6 @@ class Repository():
         return self.code_frequency
 
     def last_weeks_commits(self):
-        
+        print('zd')
     
     

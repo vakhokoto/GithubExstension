@@ -1,4 +1,5 @@
 from fetching import Fetcher
+from analytics import RepoAnalyzer
 import sys
 sys.path.append("./PyGithub");
 from github import Github
@@ -26,15 +27,18 @@ code_freq = fetcher.get_code_frequency()
 #commits = fetcher.get_commits(limit = 2)
 repo = fetcher.get_repository()
 
-print(repo.get_languages())
-print(repo.get_description())
-for contr in repo.get_contributors():
-    print(contr.get_login())
+analyzer = RepoAnalyzer(repo)
+print(analyzer.language_distribution())
 
-print("DESC: ", repo.get_description())
-print("")
-print("CONTRIBUTOR STATS: ", repo.get_contributor_stats())
-print("")
-print("COMMIT STATS: ", repo.get_commit_stats())
-print("")
-print("CODE FREQUENCY: ", repo.get_code_frequency())
+# print(repo.get_languages())
+# print(repo.get_description())
+# for contr in repo.get_contributors():
+#     print(contr.get_login())
+
+# print("DESC: ", repo.get_description())
+# print("")
+# print("CONTRIBUTOR STATS: ", repo.get_contributor_stats())
+# print("")
+# print("COMMIT STATS: ", repo.get_commit_stats())
+# print("")
+# print("CODE FREQUENCY: ", repo.get_code_frequency())
