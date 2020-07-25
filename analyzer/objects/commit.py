@@ -17,7 +17,7 @@ class Commit(Object):
         """
         self.sha = commit_info['sha']
         self.author = commit_info['author']
-        self.commit_msg = commit_msg['commit message']
+        self.commit_msg = commit_info['commit message']
         self.date = commit_info['date']
         self.stats = commit_info['stats']
         self.url = commit_info['url']
