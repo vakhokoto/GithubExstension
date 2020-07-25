@@ -21,10 +21,11 @@ metadata = fetcher.get_metadata()
 contributor_stats = fetcher.get_contributor_stats()
 commit_stats = fetcher.get_commit_stats()
 code_freq = fetcher.get_code_frequency()
-print(contributors, metadata, contributor_stats, commit_stats, code_freq)
+#print(contributors, metadata, contributor_stats, commit_stats, code_freq)
 
-commits = fetcher.get_commits()
+commits = fetcher.get_commits(limit = 2)
 
 for com in commits:
-    print(com.get_author_login())
+    print(com.get_author_name())
+    print(com.get_author_username())
     print(com.get_commit_msg())

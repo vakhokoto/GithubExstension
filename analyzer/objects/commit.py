@@ -4,7 +4,8 @@ class Commit():
         Class representing a single commit
         Methods:
             get_sha - sha of a commit
-            get_author_login - username of an author
+            get_author_name - name of an author
+            author_username - username of an author
             get_commit_msg - commit message
             get_date - date of a commit
             get_stats - statistics of a commit, lines added/deleted
@@ -16,7 +17,8 @@ class Commit():
             get_files_changed_count - count of files changed
         """
         self.sha = commit_info['sha']
-        self.author = commit_info['author']
+        self.author_name = commit_info['author name']
+        self.author_username = commit_info['author username']
         self.commit_msg = commit_info['commit message']
         self.date = commit_info['date']
         self.stats = commit_info['stats']
@@ -26,8 +28,11 @@ class Commit():
     def get_sha(self):
         return self.sha
     
-    def get_author_login(self):
-        return self.author
+    def get_author_name(self):
+        return self.author_name
+
+    def get_author_username(self):
+        return self.author_username
 
     def get_commit_msg(self):
         return self.commit_msg

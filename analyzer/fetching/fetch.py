@@ -61,13 +61,16 @@ class Fetcher():
             code_frequency.append({'date':stat.week, 'additions':stat.additions, 'deletions':stat.deletions})
         return code_frequency
 
-    def get_commits(self):
+    def get_commits(self, limit : int):
         commits = self.repository.get_commits()
         commits_list = []
         for commit in commits:
+            if limit == 0:
+                break
             commit_dict = {}
             commit_dict['sha'] = commit.sha 
-            commit_dict['author'] = commit.author.name
+            commit_dict['author name'] = commit.author.name
+            commit_dict['author username'] = commit.raw_data['author']['login']
             commit_dict['commit message'] = commit.raw_data['commit']['message']
             commit_dict['date'] = commit.raw_data['commit']['author']['date']
             commit_dict['stats'] = commit.raw_data['stats']
@@ -77,4 +80,5 @@ class Fetcher():
                 commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename, "patch" : f.patch} )
             new_commit = Commit(commit_dict)
             commits_list.append(new_commit)
+            limit -= 1
         return commits_list

@@ -36,7 +36,8 @@ def get_commits(repository: str) -> json:
     for commit in commits:
         cur_commit = {}
         cur_commit['sha'] = commit.sha 
-        cur_commit['author'] = commit.author.name
+        cur_commit['author name'] = commit.author.name
+        cur_commit['author username'] = commit.raw_data['author']['login']
         cur_commit['commit message'] = commit.raw_data['commit']['message']
         cur_commit['date'] = commit.raw_data['commit']['author']['date']
         cur_commit['stats'] = commit.raw_data['stats']
@@ -46,7 +47,6 @@ def get_commits(repository: str) -> json:
             cur_commit['files'].append( {"sha" : f.sha, "filename" : f.filename, "patch" : f.patch} )
         json_tobe.append(cur_commit)
     jsn = json.dumps(json_tobe, indent=4)
-    print(jsn)
 
 username = input("Github Username: ")
 password = getpass.getpass()
