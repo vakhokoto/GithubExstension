@@ -7,17 +7,16 @@ class ContributorAnalyzer():
 
     def get_commits(self):
         commits = []
-        for com in self.repository.get_commits():
-            if com.get_author_username() == self.username:
-                cur_com = {}
-                cur_com['author name'] = com.get_author_name()
-                cur_com['author username'] = com.get_author_username()
-                cur_com['commit_msg'] = com.get_commit_msg()
-                cur_com['date'] = com.get_date()
-                cur_com['url'] = com.get_url()
-                cur_com['added'] = com.get_num_line_added()
-                cur_com['deleted'] = com.get_num_line_deleted()
-                commits.append(cur_com)
+        for com in self.repository.commits_by_user():
+            cur_com = {}
+            cur_com['author name'] = com.get_author_name()
+            cur_com['author username'] = com.get_author_username()
+            cur_com['commit_msg'] = com.get_commit_msg()
+            cur_com['date'] = com.get_date()
+            cur_com['url'] = com.get_url()
+            cur_com['added'] = com.get_num_line_added()
+            cur_com['deleted'] = com.get_num_line_deleted()
+            commits.append(cur_com)
         return commits
 
     def get_name(self):
