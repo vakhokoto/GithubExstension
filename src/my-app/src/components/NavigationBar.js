@@ -25,15 +25,9 @@ export const NavigationBar = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="navbar navbar-expand lg">
-          <Nav.Item>
-            <Link to="/">Home</Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Link to="/about">About</Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Link to="/analyze">Analyze</Link>
-          </Nav.Item>
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/analyze">Analyze</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
