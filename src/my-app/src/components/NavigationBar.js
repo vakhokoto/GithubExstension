@@ -24,21 +24,15 @@ export const NavigationBar = () => (
       <Navbar.Brand href="/">Github Analyzer</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav class="navbar navbar-expand lg">
+        <Nav className="navbar navbar-expand lg">
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Home</Link>
-            </Nav.Link>
+            <Link to="/">Home</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/about">About</Link>
-            </Nav.Link>
+            <Link to="/about">About</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/analyze">Analyze</Link>
-            </Nav.Link>
+            <Link to="/analyze">Analyze</Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
