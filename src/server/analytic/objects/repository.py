@@ -47,7 +47,13 @@ class Repository():
 
     def commits_by_user(self, username):
         user_commits = []
+        for commit in self.commits:
+            if commit.get_author_username() == username:
+                user_commits.append(commit)
+        return user_commits
         
+    def get_commits(self):
+        return self.commits
 
     # TODO: current_date = start_date
     def ndays_commits(self, n=30):
