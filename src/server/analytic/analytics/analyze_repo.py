@@ -30,7 +30,6 @@ class RepoAnalyzer():
             commits = data_dict['commits']
             for commit in commits:
                 commit_authors.append(commit.get_author_username())
-        
         commit_cnt.update(commit_authors)
         top_contributors = commit_cnt.most_common()[:n]
         json_file = json.dumps(top_contributors, default=str)
