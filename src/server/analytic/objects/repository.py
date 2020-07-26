@@ -14,6 +14,10 @@ class Repository():
         self.commit_stats = repo_info['commit stats']
         self.code_frequency = repo_info['code frequency']
         self.commits = repo_info['commits']
+        self.issues = repo_info['issues']
+
+    def get_issues(self):
+        return self.issues
 
     def get_contributors(self):
         return self.contributors
