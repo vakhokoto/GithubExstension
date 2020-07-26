@@ -50,6 +50,23 @@ class Fetcher():
             commit_stats.append({'date':stat.week, 'total':stat.total, 'days':stat.days})
         return commit_stats
 
+    def get_issues(self):
+        """
+        Returns information about issues : 
+        title, user, labels, body and number of comments
+        """
+        issues = []
+        for issue in self.repository.get_issues():
+            issue_info = {}
+            issue_info['body'] = issue.body
+            issue_info['labels'] = [label.name for label in issue.labels]
+            issue_info['user'] = issue.user.name
+            issue_info['title'] = issue.title
+            issue_info['num_comments'] = issue.comments
+            issues.append(issue_info)
+        return issues
+
+
     def get_code_frequency(self):
         """
         Returns code frequency per week
@@ -69,7 +86,8 @@ class Fetcher():
                     'contributor stats' : self.get_contributor_stats(), 
                     'commit stats' : self.get_commit_stats(), 
                     'code frequency' : self.get_code_frequency(),
-                    'commits' : self.get_commits(limit=200)
+                    'commits' : self.get_commits(limit=20),
+                    'issues' : self.get_issues()
                     }
         repo = Repository(repo_dict)
         return repo
