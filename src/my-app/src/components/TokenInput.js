@@ -1,6 +1,4 @@
 import React from "react";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormContro from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 
 import styled from "styled-components";
@@ -26,20 +24,41 @@ const Styles = styled.div`
   }
 `;
 
-function handleSubmit() {
-  console.log("bla");
-}
+export class TokenInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { textInput: "" };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-export const TokenInput = () => (
-  <Styles>
-    <Form>
-      <Form.Group controlId="TokenInputter">
-        <Form.Label>Enter Token</Form.Label>
-        <Form.Control type="text" placeholder="Enter the token" />
-        <Form.Text className="text-muted">
-          We'll never share your token, trust us.
-        </Form.Text>
-      </Form.Group>
-    </Form>
-  </Styles>
-);
+  handleSubmit(ev) {
+    ev.preventDefault();
+    console.log("davadada");
+  }
+
+  handleChange(ev) {
+    this.setState({ textInput: ev.target.value });
+  }
+
+  render() {
+    return (
+      <Styles>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="TokenInputter">
+            <Form.Label>Enter Token</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter thedwwadwa"
+              value={this.state.textInput}
+              onChange={this.handleChange}
+            />
+            <Form.Text id="textInput" className="text-muted">
+              We'll never share your token, trust us.
+            </Form.Text>
+          </Form.Group>
+        </Form>
+      </Styles>
+    );
+  }
+}

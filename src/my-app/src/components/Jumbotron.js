@@ -2,7 +2,6 @@ import React from "react";
 import { Jumbotron as Jumbo, Container } from "react-bootstrap";
 import styled from "styled-components";
 import shota from "../assets/shota.jpg";
-import { TokenInput } from "./TokenInput";
 
 import { Guide } from "./Guide";
 

@@ -1,7 +1,5 @@
 import React from "react";
 import { TokenInput } from "./components/TokenInput";
-// import { Guide } from "./components/Guide";
-import { Link } from "react-router-dom";
 
 export const Home = () => (
   <React.Fragment>
