@@ -21,13 +21,22 @@ class ContributorAnalyzer():
         return commits
 
     def get_name(self):
-        pass
+        for cont in self.repository.get_contributors():
+            if self.username == cont.get_login():
+                return cont.get_name()
+        return self.username
 
     def get_added_lines(self):
-        pass
+        added = 0
+        for com in self.repository.commits_by_user():
+            added += com.get_num_line_added()
+        return added
 
     def get_deleted_lines(self):
-        pass
+        deleted = 0
+        for com in self.repository.commits_by_user():
+            deleted += com.get_num_line_deleted()
+        return deleted
 
     def weekly_commits_stats(self):
         contributor_stats = self.repository.get_contributor_stats()
