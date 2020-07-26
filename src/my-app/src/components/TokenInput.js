@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-
+import axios from "axios";
 import styled from "styled-components";
 
 const Styles = styled.div`
@@ -34,7 +34,19 @@ export class TokenInput extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    console.log("davadada");
+    axios
+      .get("/token", {
+        params: {
+          token: "param",
+        },
+      })
+      .then((response) => {
+        console.log("response", response);
+        this.props.handler();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   handleChange(ev) {
@@ -49,7 +61,7 @@ export class TokenInput extends React.Component {
             <Form.Label>Enter Token</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter thedwwadwa"
+              placeholder="Enter Token"
               value={this.state.textInput}
               onChange={this.handleChange}
             />
