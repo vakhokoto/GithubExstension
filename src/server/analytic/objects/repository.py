@@ -45,6 +45,14 @@ class Repository():
     def get_code_frequency(self):
         return self.code_frequency
 
+    def name_of_user(self, username):
+        name = username
+        for cont in self.get_contributors():
+            if username == cont.get_login():
+                name = cont.get_name()
+                break
+        return name
+
     def commits_by_user(self, username):
         user_commits = []
         for commit in self.commits:

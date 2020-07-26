@@ -69,7 +69,7 @@ class Fetcher():
                     'contributor stats' : self.get_contributor_stats(), 
                     'commit stats' : self.get_commit_stats(), 
                     'code frequency' : self.get_code_frequency(),
-                    'commits' : self.get_commits(limit=10)
+                    'commits' : self.get_commits(limit=200)
                     }
         repo = Repository(repo_dict)
         return repo
@@ -96,6 +96,7 @@ class Fetcher():
             commit_dict['files'] = []
             for f in commit.files:
                 commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename, "patch" : f.patch} )
+                # commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename} )
             new_commit = Commit(commit_dict)
             commits_list.append(new_commit)
             limit -= 1

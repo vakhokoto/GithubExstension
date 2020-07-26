@@ -1,2 +1,2 @@
 from .fetching import Fetcher
-from .analytics import RepoAnalyzer, Homepage
+from .analytics import RepoAnalyzer, Homepage, ContributorAnalyzer
