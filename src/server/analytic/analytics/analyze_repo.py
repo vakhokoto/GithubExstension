@@ -35,6 +35,12 @@ class RepoAnalyzer():
         json_file = json.dumps(top_contributors, default=str)
         return json_file
 
-    def get_most_fire_files(self):
-        pass
+    def get_most_fire_files(self, n=5):
+        file_cnt = Counter()
+        for commit in self.repository.n_commits(n):
+            filenames = [cf['filename'] for cf in commit.get_files()]
+            file_cnt.update(filenames)
+        top_files = file_cnt.most_common()[:n]
+        json_file = json.dumps(top_files, default=str)
+        return json_file
 
