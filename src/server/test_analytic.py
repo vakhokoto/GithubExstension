@@ -8,18 +8,12 @@ from datetime import datetime
 
 username = input("Github Username: ")
 password = getpass.getpass()
+
 account = Github(username, password)
 repo_name = input("Name of Repository: ")
-repository = None
-for repo in account.get_user().get_repos():
-        if repo.name == repo_name:
-            repository = repo
-
-start = datetime.now()
+repository = account.get_user().get_repo(name=repo_name)
 fetcher = Fetcher(repository)
 repo = fetcher.get_repository()
-end = datetime.now()
-print(end-start)
 repo_analyzer = RepoAnalyzer(repo)
 homepage = Homepage(repo)
 contr_analyzer = ContributorAnalyzer(repository=repo, username='koaning')

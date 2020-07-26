@@ -85,19 +85,20 @@ class Fetcher():
         for commit in commits:
             if limit == 0:
                 break
-            commit_dict = {}
-            commit_dict['sha'] = commit.sha 
-            commit_dict['author name'] = commit.author.name
-            commit_dict['author username'] = commit.raw_data['author']['login']
-            commit_dict['commit message'] = commit.raw_data['commit']['message']
-            commit_dict['date'] = commit.commit.author.date
-            commit_dict['stats'] = commit.raw_data['stats']
-            commit_dict['url'] = commit.html_url
-            commit_dict['files'] = []
-            for f in commit.files:
-                commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename, "patch" : f.patch} )
-                # commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename} )
-            new_commit = Commit(commit_dict)
-            commits_list.append(new_commit)
-            limit -= 1
+            if commit.author:
+                commit_dict = {}
+                commit_dict['sha'] = commit.sha 
+                commit_dict['author name'] = commit.author.name
+                commit_dict['author username'] = commit.raw_data['author']['login']
+                commit_dict['commit message'] = commit.raw_data['commit']['message']
+                commit_dict['date'] = commit.commit.author.date
+                commit_dict['stats'] = commit.raw_data['stats']
+                commit_dict['url'] = commit.html_url
+                commit_dict['files'] = []
+                for f in commit.files:
+                    # commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename, "patch" : f.patch} )
+                    commit_dict['files'].append( {"sha" : f.sha, "filename" : f.filename} )
+                new_commit = Commit(commit_dict)
+                commits_list.append(new_commit)
+                limit -= 1
         return commits_list
