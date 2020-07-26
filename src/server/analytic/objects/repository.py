@@ -15,7 +15,6 @@ class Repository():
         self.code_frequency = repo_info['code frequency']
         self.commits = repo_info['commits']
 
-
     def get_contributors(self):
         return self.contributors
 
