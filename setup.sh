@@ -12,8 +12,8 @@ cd src/my-app
 
 # build front-end react project
 sudo npm install
-npm install --save react-router-dom
-sudo npm run build
+sudo npm install --save react-router-dom
+npm run build
 
 # return to home directory
 cd ../..
