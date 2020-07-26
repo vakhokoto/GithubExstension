@@ -46,6 +46,10 @@ class Repository():
     def get_code_frequency(self):
         return self.code_frequency
 
+    def commits_by_user(self, username):
+        user_commits = []
+        
+
     # TODO: current_date = start_date
     def ndays_commits(self, n=30):
         current_date = date.today()
