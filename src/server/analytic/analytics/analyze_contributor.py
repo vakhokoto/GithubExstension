@@ -1,4 +1,5 @@
 import json
+from collections import Counter
 
 class ContributorAnalyzer():
     def __init__(self, username, repository):
@@ -29,9 +30,16 @@ class ContributorAnalyzer():
         pass
 
     def weekly_commits_stats(self):
-        pass
+        contributor_stats = self.repository.get_contributor_stats()
+        for stat in contributor_stats:
+            if stat['author'] == self.username:
+                return stat
 
-    def get_favorite_files(self):
-        pass
-
-    
+    def get_favorite_files(self, n=5):
+        user_commits = self.repository.commits_by_user(self.username)
+        file_cnt = Counter()
+        for commit in user_commits:
+            filenames = [changed_file['filename'] for changed_file in commit.get_files()]
+            file_cnt.update(filenames)
+        top_files = file_cnt.most_common()[:n]
+        return top_files
